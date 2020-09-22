@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Hello this is my online shop</h1>
+        <div class="row" id="product-container">
+            <!--HERE WILL BE THE PRODUCTS-->
+        </div>
+        <p>Hello. This is a really simple sample project. Just plain JS, HTML, CSS(Bootstrap). There aren`t many technologies here to explain after all. Just a simple forEach high-order function to go through every item in the items array which contains a object for every product. Then inserted it in the div component, with dynamic data and classes. First I was thinking of using VUE for creating this app, but in the file that you`ve send me says only jquery or ASP. Didn`t know if it was allowed to use VUE so I decided to use plain JS. :)</p>
+    </div>
+</body>
+</html>
+<style>
+    body {
+        padding: 150px;
+    }
+    .card {
+        margin: 15px 0;
+        height: 400px;
+    }
+    .card:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        cursor: pointer;
+    }
+    img {
+        width: 250px;
+        height: 250px;
+    }
+    .out-of-stock {
+        color: red;
+    }
+</style>
+<script>
+    const items = [
+      {
+          "ProductID": 1,
+          "ProductName": "Chai",
+          "UnitPrice": 18,
+          "UnitsInStock": 39,
+          "DeliveryOn": new Date(1996, 8, 20)
+      },
+      {
+          "ProductID": 2,
+          "ProductName": "Chang",
+          "UnitPrice": 19,
+          "UnitsInStock": 17,
+          "DeliveryOn": new Date(1996, 7, 12)
+      },
+      {
+          "ProductID": 3,
+          "ProductName": "Aniseed Syrup",
+          "UnitPrice": 10,
+          "UnitsInStock": 0,
+          "DeliveryOn": new Date(1996, 8, 26)
+      },
+      {
+          "ProductID": 4,
+          "ProductName": "Chef Anton's Cajun Seasoning",
+          "UnitPrice": 22,
+          "UnitsInStock": 53,
+          "DeliveryOn": new Date(1996, 9, 19)
+      },
+      {
+          "ProductID": 5,
+          "ProductName": "Chef Anton's Gumbo Mix",
+          "UnitPrice": 21.35,
+          "UnitsInStock": 0,
+          "DeliveryOn": new Date(1996, 7, 17)
+      },
+      {
+          "ProductID": 6,
+          "ProductName": "Grandma's Boysenberry Spread",
+          "UnitPrice": 25,
+          "UnitsInStock": 120,
+          "DeliveryOn": new Date(1996, 9, 19)
+      },
+      {
+          "ProductID": 7,
+          "ProductName": "Uncle Bob's Organic Dried Pears",
+          "UnitPrice": 30,
+          "UnitsInStock": 0,
+          "DeliveryOn": new Date(1996, 7, 22)
+      },
+      {
+          "ProductID": 8,
+          "ProductName": "Northwoods Cranberry Sauce",
+          "UnitPrice": 40,
+          "UnitsInStock": 0,
+          "DeliveryOn": new Date(1996, 11, 1)
+      },
+      {
+          "ProductID": 9,
+          "ProductName": "Mishi Kobe Niku",
+          "UnitPrice": 97,
+          "UnitsInStock": 29,
+          "DeliveryOn": new Date(1997, 1, 21)
+      },
+      {
+          "ProductID": 10,
+          "ProductName": "Ikura",
+          "UnitPrice": 31,
+          "UnitsInStock": 31,
+          "DeliveryOn": new Date(1996, 8, 5)
+      }
+    ]
+    items.forEach(el => {
+        document.getElementById('product-container').insertAdjacentHTML('beforeend', `
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                  <div class="card" style="width: 18rem;">
+                    <img src="./assets/${el.ProductID}.jpg" class="card-img-top" alt="...">
+                     <div class="card-body">
+                       <h5 class="card-title">${el.ProductName}</h5>
+                       <p class="card-text">$${el.UnitPrice}</p>
+                       <p id="inStock"class="card-text ${el.UnitsInStock > 1 ? '' : 'out-of-stock'}">Units in stock: ${el.UnitsInStock > 1 ? el.UnitsInStock : 'Out of stock'}</p>
+                     </div>
+                  </div>
+                </div>
+            `)
+        })
+
+</script>
